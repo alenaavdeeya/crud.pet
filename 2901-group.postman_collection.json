@@ -15,7 +15,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"pet_id\", _.random(1,50000));"
+									"pm.environment.set(\"pet_id\", _.random(1,50000));\r",
+									"pm.environment.set(\"pet_category_id\",_.random(1,500));\r",
+									"var name = pm.variables.replaceIn(\"{{$randomFirstName}}\"); \r",
+									"pm.environment.set(\"pet_name\",name);"
 								],
 								"type": "text/javascript"
 							}
@@ -28,10 +31,19 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"\r",
 									"var jsonData = pm.response.json();\r",
 									"pm.test(\"Response ID the same as in environment\", function () {\r",
 									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"pet_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response categoryID the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.id).to.eql(pm.environment.get(\"pet_category_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response category pet name the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(pm.environment.get(\"pet_name\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -43,7 +55,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": {{pet_id}},\r\n  \"category\": {\r\n    \"id\": 321,\r\n    \"name\": \"ASD-category\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"syyyg\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 654,\r\n      \"name\": \"ereryrtt\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"raw": "{\r\n    \"id\": {{pet_id}},\r\n    \"category\": {\r\n        \"id\": {{pet_category_id}},\r\n        \"name\": \"{{pet_name}}\"\r\n    },\r\n    \"name\": \"doggie\",\r\n    \"photoUrls\": [\r\n        \"string\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 0,\r\n            \"name\": \"sharik\"\r\n        }\r\n    ],\r\n    \"status\": \"available\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,9 +88,20 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
 									"var jsonData = pm.response.json();\r",
-									"pm.test(\"Response ID the same as in environment\", function () {\r",
+									"pm.test(\"Response pet ID the same as in environment\", function () {\r",
 									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"pet_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response category ID the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.id).to.eql(pm.environment.get(\"pet_category_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response category pet name the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(pm.environment.get(\"pet_name\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -128,7 +151,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"pet_id\", _.random(1,50000));"
+									"pm.environment.set(\"pet_id\", _.random(1,50000));\r",
+									"pm.environment.set(\"pet_category_id\",_.random(1,500));\r",
+									"var name = pm.variables.replaceIn(\"{{$randomFirstName}}\"); \r",
+									"pm.environment.set(\"pet_name\",name);"
 								],
 								"type": "text/javascript"
 							}
@@ -143,8 +169,18 @@
 									"\r",
 									"\r",
 									"var jsonData = pm.response.json();\r",
-									"pm.test(\"Response ID the same as in environment\", function () {\r",
+									"pm.test(\"Response pet ID the same as in environment\", function () {\r",
 									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"pet_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response category ID the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.id).to.eql(pm.environment.get(\"pet_category_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response category pet name the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(pm.environment.get(\"pet_name\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -156,7 +192,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\":{{pet_id}},\r\n  \"category\": {\r\n    \"id\": 321,\r\n    \"name\": \"ASD-category\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"ssssssssssssssssssssssssssss\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 654,\r\n      \"name\": \"ereryrtt\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"raw": "{\r\n  \"id\": {{pet_id}},\r\n  \"category\": {\r\n    \"id\": {{pet_category_id}},\r\n    \"name\": \"{{pet_name}}\"\r\n  },\r\n  \"name\": \"myrka\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"sasasasasa\"\r\n    }\r\n  ],\r\n  \"status\": \"zzzzzz\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -198,9 +234,20 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
 									"var jsonData = pm.response.json();\r",
-									"pm.test(\"Response ID the same as in environment\", function () {\r",
+									"pm.test(\"Response pet ID the same as in environment\", function () {\r",
 									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"pet_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response category ID the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.id).to.eql(pm.environment.get(\"category_id\"));\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Response category pet name the same as in environment\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(pm.environment.get(\"pet_name\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -301,10 +348,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
 									"});\r",
-									""
+									"pm.test(\"Pet is not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Pet not found\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
