@@ -13,3 +13,4 @@ Deleting a pet
 Checking if deletion was successfull
 
 
+https://petstore.swagger.io/
