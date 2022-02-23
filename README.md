@@ -2,15 +2,9 @@
 
 Creating a new pet
 
-Checking if a pet was created
-
-Updating information about a pet
-
-Checking if the information was updated
+Modifying information about a pet
 
 Deleting a pet
-
-Checking if deletion was successfull
 
 
 https://petstore.swagger.io/
